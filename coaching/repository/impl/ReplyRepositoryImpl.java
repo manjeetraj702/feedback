@@ -15,15 +15,14 @@ public class ReplyRepositoryImpl implements ReplyRepository {
 
     @Override
     public void deleteReplies(String batchId,String quesitonId) {
-        List<Reply> replyList1= replyList;
-        for(Reply reply: replyList1)
-        {
-
-            if(quesitonId.equals(reply.getQuesitionId()) && reply.getBatchId().equals(batchId))
-            {
-                replyList.remove(reply);
-            }
-        }
+         for(int i=0;i<replyList.size();i++)
+       {
+           Reply reply=replyList.get(i);
+           if(quesitonId.equals(reply.getQuesitionId()) && reply.getBatchId().equals(batchId))
+           {
+               replyList.remove(reply);
+           }
+       }
     }
 
     @Override

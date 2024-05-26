@@ -28,6 +28,7 @@ public class Ui {
             } else if (choice == 0) {
                 System.out.println("Process Finished, Exiting The Program ..................");
                 break loop;
+
             } else if (choice == 2) {
                 System.out.print("Enter Your Phone Number : ");
                 String pno= sc.next();

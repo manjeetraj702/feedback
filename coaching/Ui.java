@@ -9,6 +9,7 @@ public class Ui {
         userController.SignUp("rahul","1234","qwe","ADMIN");
         userController.SignUp("chotu","0000","qwe","Student");
         userController.SignUp("kishan","5468","aka","Student");
+        userController.SignUp("s","d12","d","fh,"user");
         userController.signIn("1234","qwjg");
         userController.createBatch("c4","1234");
         userController.createBatch("c1","1234");

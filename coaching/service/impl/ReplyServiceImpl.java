@@ -47,7 +47,7 @@ public class ReplyServiceImpl implements ReplyService {
         }
         else
         {
-            System.out.println("Invalid adminNo");
+            System.out.println("Invalid admin No");
         }
     }
 

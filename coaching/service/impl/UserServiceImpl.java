@@ -4,7 +4,6 @@ import coaching.model.User;
 import coaching.repository.impl.UserRepositoryImpl;
 import coaching.service.UserService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
@@ -13,18 +12,18 @@ public class UserServiceImpl implements UserService {
     public void signUp(String userName, String phoneNo,String password, String role) {
         User user=new User(userName,phoneNo,password,role);
         userRepository.save(user);
-        System.out.println("User added");
+        System.out.println("User Added Successfully");
     }
 
     @Override
-    public void signIn( String phoneNo,String password) {
+    public String signIn(String phoneNo, String password) {
         User user=userRepository.find(phoneNo);
         if(user!=null && user.getPassword().equals(password) )
         {
-            System.out.println("successfully login");
+            return "Successfully Login";
         }
         else{
-            System.out.println("Invalid");
+            return "Invalid Phone Number Or PassWord";
         }
     }
 

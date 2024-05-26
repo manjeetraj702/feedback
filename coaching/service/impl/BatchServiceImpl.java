@@ -1,7 +1,6 @@
 package coaching.service.impl;
 
 import coaching.model.Batch;
-import coaching.model.User;
 import coaching.repository.impl.BatchRepositoryImpl;
 import coaching.service.BatchService;
 
@@ -10,42 +9,30 @@ import java.util.List;
 public class BatchServiceImpl implements BatchService {
     BatchRepositoryImpl batchRepository=new BatchRepositoryImpl();
     @Override
-    public void createBatch(String batchId, String adminPhone,UserServiceImpl userService) {
-        User user=userService.findByPhoneNO(adminPhone);
-        if(user !=null && user.getRole().equals("ADMIN"))
+    public String createBatch(String batchId) {
+        List<Batch> batchList = batchRepository.getList();
+        for (Batch batch:batchList)
         {
-            Batch batch=new Batch(batchId);
-            batchRepository.saveBatch(batch);
-            System.out.println("batch created");
-        }
-        else
-        {
-            System.out.println("you are not admin");
-        }
+            if(batch.getBatchId().equals(batchId))
+            {
+                return  "Batch already exist";
+            }
 
+        }
+        Batch batch=new Batch(batchId);
+        batchRepository.saveBatch(batch);
+        return  "Batch Created";
     }
 
     @Override
-    public void addStudent(String bathcId,String phoneNo, String adminPhoneNo,UserServiceImpl userService) {
-        User user=userService.findByPhoneNO(adminPhoneNo);
-        if(user !=null && user.getRole().equals("ADMIN"))
-        {User user1=userService.findByUser(phoneNo);
-            if(user1!=null){
-                Batch batch=batchRepository.addStudent(bathcId,phoneNo);
-            if(batch!=null)
-            {
-                System.out.println("Student save");
-            }
-            else {
-                System.out.println("Batch not exist");
-            }}
-            else {
-                System.out.println("Student not present in user list");
-            }
-        }
-        else {
-            System.out.println("Invalid admin no");
-        }
+    public String addStudent(String bathcId,String phoneNo) {
+                return batchRepository.addStudent(bathcId,phoneNo);
+    }
+    public String addQuestion(String bathcId,String questionId) {
+        return batchRepository.addQuestion(bathcId,questionId);
+    }
+    public String removeQuestion(String bathcId,String questionId) {
+        return batchRepository.removeQuestion(bathcId,questionId);
     }
 
     @Override
@@ -55,5 +42,9 @@ public class BatchServiceImpl implements BatchService {
 
     public List<Batch> getBatchList() {
         return batchRepository.getList();
+    }
+
+    public Batch getBatch(String batchId) {
+        return batchRepository.getBatch(batchId);
     }
 }

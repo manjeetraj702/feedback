@@ -19,7 +19,7 @@ public class User {
         this.userName = userName;
         this.phoneNo = phoneNo;
         this.password=password;
-        this.role = role;
+        this.role = role.toUpperCase();
     }
 
     public String getUserName() {
@@ -43,6 +43,6 @@ public class User {
     }
 
     public void setRole(String role) {
-        this.role = role;
+        this.role = role.toUpperCase();
     }
 }

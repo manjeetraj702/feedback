@@ -19,50 +19,48 @@ public class UserController {
     public String signIn(String phoneNo, String password)
     {
         return userService.signIn(phoneNo,password);
-//        return phoneNo;
     }
     public User findByPhoneNO(String phoneNo)
     {
         return  userService.findByPhoneNO(phoneNo);
     }
-    public void createBatch(String batchId,String adminPhone)
+    public void createBatch(String batchId)
     {
-        batchService.createBatch(batchId,adminPhone,userService);
+        batchService.createBatch(batchId);
     }
-    public void addStudent(String batchId,String phoneNo,String adminPhoneNo)
+    public void addStudent(String batchId,String phoneNo)
     {
-        batchService.addStudent(batchId,phoneNo,adminPhoneNo,userService);
+        batchService.addStudent(batchId,phoneNo);
     }
 
-    public  void createQuestion(String batchId,String questionId,String question,String adminPhoneNo)
+    public  void createQuestion(String questionId,String question)
     {
-        feedbackService.createQuestion(batchId,questionId,question,adminPhoneNo,userService);
+        feedbackService.createQuestion(questionId,question);
     }
-    public void editQuestion(String batchId, String questionId, String question,String adminPhoneNo)
+    public void editQuestion( String questionId, String question)
     {
-        feedbackService.editQuestion(batchId,questionId,question,adminPhoneNo,userService);
+        feedbackService.editQuestion(questionId,question);
     }
-    public void deleteQuestion(String batchId, String questionId,String adminPhoneNo) {
-        feedbackService.deleteQuestion(batchId,questionId,adminPhoneNo,userService,replyService);
+    public String addQuestion(String bathcId,String questionId)
+    {
+        return  null;
     }
+
     public void replyFeedback(String batchId,String phoneNo){
-        feedbackService.replyFeedback(batchId,phoneNo,replyService,batchService);
+//        feedbackService.replyFeedback(batchId,phoneNo,replyService,batchService);
     }
-    public  void assignBatch(String batchId,String phoneNo,String adminPhoneNo)
+    public  void assignBatch(String batchId,String phoneNo)
     {
-        batchService.addStudent(batchId,phoneNo,adminPhoneNo,userService);
+        batchService.addStudent(batchId,phoneNo);
     }
-    public void getAllReply(String adminPhoneNO){
-        replyService.getAllReply(adminPhoneNO,userService,batchService);
+    public void getAllReply(){
+        replyService.getAllReply(batchService);
     }
     public void getReply(String phoneNo)
     {
         replyService.getReply(phoneNo);
     }
-    public void batchReply(String phoneNo,String batchId)
-    {
-        replyService.batchReply(phoneNo,batchId,userService);
-    }
+
 
 
 

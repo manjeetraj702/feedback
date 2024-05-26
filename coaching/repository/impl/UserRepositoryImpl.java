@@ -10,12 +10,12 @@ public class UserRepositoryImpl implements UserRepository {
     private List<User> userList =new ArrayList<>();
 
     @Override
-    public void save(User user) {
+    public void saveUser(User user) {
         userList.add(user);
     }
 
     @Override
-    public User find(String phoneNo) {
+    public User findByPhoneNo(String phoneNo) {
         for(User user:userList)
         {
             if(user.getPhoneNo().equals(phoneNo))

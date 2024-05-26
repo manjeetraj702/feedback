@@ -13,7 +13,6 @@ public class ReplyRepositoryImpl implements ReplyRepository {
         replyList.add(reply);
     }
 
-    @Override
     public void deleteReplies(String batchId,String quesitonId) {
          for(int i=0;i<replyList.size();i++)
        {

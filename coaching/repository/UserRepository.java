@@ -5,8 +5,8 @@ import coaching.model.User;
 import java.util.List;
 
 public interface UserRepository {
-    void save(User user);
-    User find(String phoneNo);
+    void saveUser(User user);
+    User findByPhoneNo(String phoneNo);
 
     List<User> getUserList();
 }

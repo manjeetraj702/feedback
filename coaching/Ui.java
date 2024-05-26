@@ -25,7 +25,7 @@ public class Ui {
                 System.out.print("Enter Your Role : ");
                 String role= sc.next();
                 userController.SignUp(name,pno,pass,role);
-            } else if (choice == 3) {
+            } else if (choice == 0) {
                 System.out.println("Process Finished, Exiting The Program ..................");
                 break loop;
             } else if (choice == 2) {
@@ -37,7 +37,7 @@ public class Ui {
                 System.out.println(k);
                 System.out.println("\n");
                 if(k.equals("Successfully Login")){
-                      while (true) {
+                      loop2 : while (true) {
                         System.out.println("Press '0' For Exiting Program");
                         System.out.println("Press '1' For Creating Batch ");
                         System.out.println("Press '2' For Adding Student To A Batch");
@@ -53,8 +53,8 @@ public class Ui {
                         int inp = sc.nextInt();
                         switch (inp) {
                             case 0:
-                                System.out.println("Exiting This Program ............ ");
-                                break loop;
+                                System.out.println("Moving To Login Page ............ ");
+                                break loop2;
                             case 1:
                                 System.out.print("Enter Batch ID : ");
                                 String batchID=sc.next();

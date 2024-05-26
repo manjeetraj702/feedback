@@ -9,6 +9,9 @@ public class Reply {
     public String getQuesitionId() {
         return quesitionId;
     }
+     public void setQuesitionId(String quesitionId) {
+        this.quesitionId = quesitionId;
+    }
 
     public String getBatchId() {
         return batchId;
@@ -16,10 +19,6 @@ public class Reply {
 
     public void setBatchId(String batchId) {
         this.batchId = batchId;
-    }
-
-    public void setQuesitionId(String quesitionId) {
-        this.quesitionId = quesitionId;
     }
 
     public String getPhoneNo() {

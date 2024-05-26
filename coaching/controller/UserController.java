@@ -16,9 +16,10 @@ public class UserController {
     {
         userService.signUp(userName,phoneNO,password,role);
     }
-    public void signIn(String phoneNo,String password)
+    public String signIn(String phoneNo, String password)
     {
-        userService.signIn(phoneNo,password);
+        return userService.signIn(phoneNo,password);
+//        return phoneNo;
     }
     public User findByPhoneNO(String phoneNo)
     {

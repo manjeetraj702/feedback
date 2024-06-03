@@ -6,10 +6,6 @@ public class User {
     private String role;
     private String password;
 
-    public String getPassword() {
-
-        return password;
-    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -19,9 +15,13 @@ public class User {
         this.userName = userName;
         this.phoneNo = phoneNo;
         this.password=password;
-        this.role = role;
+        this.role = role.toUpperCase();
     }
 
+    public String getPassword() {
+
+        return password;
+    }
     public String getUserName() {
         return userName;
     }
@@ -43,6 +43,6 @@ public class User {
     }
 
     public void setRole(String role) {
-        this.role = role;
+        this.role = role.toUpperCase();
     }
 }

@@ -1,25 +1,11 @@
 package coaching.model;
 
-import java.util.List;
 
 public class Feedback {
-    String batchId;
     String questionId;
     String question;
 
-
-
-    public String getBatchId() {
-        return batchId;
-    }
-
-    public void setBatchId(String batchId) {
-        this.batchId = batchId;
-    }
-
-
-    public Feedback(String batchId, String questionId, String question) {
-        this.batchId = batchId;
+    public Feedback( String questionId, String question) {
         this.questionId = questionId;
         this.question = question;
     }
@@ -27,7 +13,6 @@ public class Feedback {
     public String getQuestionId() {
         return questionId;
     }
-
     public void setQuestionId(String questionId) {
         this.questionId = questionId;
     }

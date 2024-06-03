@@ -8,21 +8,11 @@ import java.util.List;
 
 public class ReplyRepositoryImpl implements ReplyRepository {
     private List<Reply> replyList=new ArrayList<>();
+
+
     @Override
     public void saveReply(Reply reply) {
         replyList.add(reply);
-    }
-
-    @Override
-    public void deleteReplies(String batchId,String quesitonId) {
-         for(int i=0;i<replyList.size();i++)
-       {
-           Reply reply=replyList.get(i);
-           if(quesitonId.equals(reply.getQuesitionId()) && reply.getBatchId().equals(batchId))
-           {
-               replyList.remove(reply);
-           }
-       }
     }
 
     @Override
@@ -41,11 +31,10 @@ public class ReplyRepositoryImpl implements ReplyRepository {
         for(Reply reply:replyList)
         {
             if(batchId.equals(reply.getBatchId())) {
-                System.out.println(reply.getQuesitionId() + " " + reply.getReply());
+                System.out.println(reply.getQuestionId() + " " + reply.getReply());
             }
         }
     }
-
 
 
 

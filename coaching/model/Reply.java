@@ -1,16 +1,16 @@
 package coaching.model;
 
 public class Reply {
-    private  String batchId;
-    private  String quesitionId;
-    private  String phoneNo;
-    private  String reply;
+    private String batchId;
+    private String questionId;
+    private String phoneNo;
+    private String reply;
 
-    public String getQuesitionId() {
-        return quesitionId;
-    }
-     public void setQuesitionId(String quesitionId) {
-        this.quesitionId = quesitionId;
+    public Reply(String batchId, String questionId, String phoneNo, String reply) {
+        this.batchId = batchId;
+        this.questionId = questionId;
+        this.phoneNo = phoneNo;
+        this.reply = reply;
     }
 
     public String getBatchId() {
@@ -19,6 +19,14 @@ public class Reply {
 
     public void setBatchId(String batchId) {
         this.batchId = batchId;
+    }
+
+    public String getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(String questionId) {
+        this.questionId = questionId;
     }
 
     public String getPhoneNo() {
@@ -35,16 +43,5 @@ public class Reply {
 
     public void setReply(String reply) {
         this.reply = reply;
-    }
-
-    public Reply(String batchId, String quesitionId, String phoneNo, String reply) {
-        this.batchId = batchId;
-        this.quesitionId = quesitionId;
-        this.phoneNo = phoneNo;
-        this.reply = reply;
-    }
-
-    public Reply(String batchId) {
-        this.batchId = batchId;
     }
 }

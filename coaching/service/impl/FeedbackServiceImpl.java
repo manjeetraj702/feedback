@@ -1,61 +1,58 @@
 package coaching.service.impl;
-
-import coaching.model.Batch;
 import coaching.model.Feedback;
-import coaching.model.User;
 import coaching.repository.impl.FeedbackRepositoryImpl;
 import coaching.service.FeedbackService;
 
 import java.util.List;
-import java.util.Scanner;
+
 
 public class FeedbackServiceImpl implements FeedbackService {
     FeedbackRepositoryImpl feedbackRepository=new FeedbackRepositoryImpl();
     @Override
-    public void createQuestion(String batchId, String questionId, String question,String adminPhoneNO,UserServiceImpl userService) {
-        User user=userService.findByPhoneNO(adminPhoneNO);
-        if(user!=null && user.getRole().equals("ADMIN"))
+    public String  createQuestion( String questionId, String question) {
+        questionId=questionId.trim();
+        if(questionId.isEmpty())
         {
-            Feedback feedback=new Feedback(batchId,questionId,question);
-            feedbackRepository.createQuesiton(feedback);
-            System.out.println("question created");
+            return "QuestionId is blank";
         }
-    }
-
-    @Override
-    public void editQuestion(String batchId, String questionId, String question,String adminPhoneNo,UserServiceImpl userService) {
-        User user=userService.findByPhoneNO(adminPhoneNo);
-        if(user!=null && user.getRole().equals("ADMIN"))
+        question=question.trim();
+        if(question.isEmpty())
         {
-            feedbackRepository.editQuestion(batchId,questionId,question);
+            return "Question is blank";
         }
-    }
-
-    @Override
-    public void deleteQuestion(String batchId, String questionId,String adminPhoneNo,UserServiceImpl userService,ReplyServiceImpl replyService) {
-        User user=userService.findByPhoneNO(adminPhoneNo);
-        if(user!=null && user.getRole().equals("ADMIN"))
+        List<Feedback> feedbackList=feedbackRepository.getFeedbackList();
+        for(Feedback feedback:feedbackList)
         {
-            feedbackRepository.deleteQuestion(batchId,questionId);
-            replyService.deleteReply(batchId,questionId);
-            System.out.println("delete");
-        }
-    }
-    public  void replyFeedback(String batchId,String phoneNo,ReplyServiceImpl replyService,BatchServiceImpl batchService) {
-        Batch batch=batchService.checkStudent(batchId,phoneNo);
-        if (batch != null ) {
-            List<Feedback> feedbackList=feedbackRepository.getFeedbackList();
-            for(Feedback feedback:feedbackList)
+            if(feedback.getQuestionId().equals(questionId))
             {
-                if(feedback.getBatchId().equals(batchId))
-                {
-                    System.out.println(feedback.getQuestion());
-                    Scanner sc=new Scanner(System.in);
-                    String reply=sc.nextLine();
-                    replyService.createReply(batchId,feedback.getQuestionId(),phoneNo,reply);
-                }
+                return  "QuestionId Already exist";
             }
-            System.out.println("Thanks for feedback");
         }
+            Feedback feedback=new Feedback(questionId,question);
+            feedbackRepository.createQuesiton(feedback);
+            return "question created";
+
+    }
+
+    @Override
+    public String editQuestion( String questionId, String question) {
+        questionId=questionId.trim();
+        if(questionId.isEmpty())
+        {
+            return "QuestionId is blank";
+        }
+        question=question.trim();
+        if(question.isEmpty())
+        {
+            return "Question is blank";
+        }
+            feedbackRepository.editQuestion(questionId,question);
+        return "Question Successfully changed";
+
+    }
+
+
+    public List<Feedback> getFeedbackList() {
+        return feedbackRepository.getFeedbackList();
     }
 }

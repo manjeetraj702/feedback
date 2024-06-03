@@ -6,7 +6,7 @@ import java.util.List;
 public class Batch {
     private String batchId;
     private List<String> students =new ArrayList<>();
-    private List<String> batchQuestions;
+    private List<String> batchQuestions=new ArrayList<>();
 
 
 
@@ -38,5 +38,6 @@ public class Batch {
     public Batch(String batchId) {
         this.batchId = batchId;
     }
+
 
 }

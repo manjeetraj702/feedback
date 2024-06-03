@@ -41,13 +41,13 @@ public class UserController {
     {
         feedbackService.editQuestion(questionId,question);
     }
-    public String addQuestion(String bathcId,String questionId)
+    public String addQuestion(String batchId,String questionId)
     {
-        return  null;
+        return batchService.addQuestion(batchId,questionId);
     }
 
-    public void replyFeedback(String batchId,String phoneNo){
-//        feedbackService.replyFeedback(batchId,phoneNo,replyService,batchService);
+    public void giveFeedbackReply(String batchId,String phoneNo){
+        replyService.giveFeedbackReply(batchId,phoneNo,feedbackService,batchService);
     }
     public  void assignBatch(String batchId,String phoneNo)
     {
@@ -56,7 +56,7 @@ public class UserController {
     public void getAllReply(){
         replyService.getAllReply(batchService);
     }
-    public void getReply(String phoneNo)
+    public void getReplyByStudentPhoneNo(String phoneNo)
     {
         replyService.getReply(phoneNo);
     }

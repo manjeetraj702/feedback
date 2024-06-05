@@ -39,4 +39,5 @@ public class Batch {
         this.batchId = batchId;
     }
 
+
 }

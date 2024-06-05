@@ -20,7 +20,7 @@ public class UserController {
     {
         return userService.signIn(phoneNo,password);
     }
-    public User findByPhoneNO(String phoneNo)
+    public User findByPhoneNo(String phoneNo)
     {
         return  userService.findByPhoneNO(phoneNo);
     }

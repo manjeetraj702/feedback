@@ -13,7 +13,7 @@ public class FeedbackServiceImpl implements FeedbackService {
         questionId=questionId.trim();
         if(questionId.isEmpty())
         {
-            return "QuestionId is blank";
+            return "Question ID is blank";
         }
         question=question.trim();
         if(question.isEmpty())

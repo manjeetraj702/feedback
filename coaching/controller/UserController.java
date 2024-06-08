@@ -12,9 +12,9 @@ public class UserController {
     FeedbackServiceImpl feedbackService=new FeedbackServiceImpl();
     ReplyServiceImpl replyService=new ReplyServiceImpl();
     
-    public void SignUp(String userName,String phoneNO,String password,String role)
+    public void SignUp(String userName,String phoneNo,String password,String role)
     {
-        userService.signUp(userName,phoneNO,password,role);
+        userService.signUp(userName,phoneNo,password,role);
     }
     public String signIn(String phoneNo, String password)
     {

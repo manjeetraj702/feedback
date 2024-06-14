@@ -20,10 +20,10 @@ public class UserController {
     {
         return userService.signIn(phoneNo,password);
     }
-//    public User findByPhoneNo(String phoneNo)
-//    {
-//        return  userService.findByPhoneNO(phoneNo);
-//    }
+    public User findByPhoneNo(String phoneNo)
+    {
+        return  userService.findByPhoneNo(phoneNo);
+    }
     public String createBatch(String batchId)
     {
         return batchService.createBatch(batchId);
@@ -46,8 +46,8 @@ public class UserController {
         return batchService.addQuestion(batchId,questionId);
     }
 
-    public void giveFeedbackReply(String batchId,String phoneNo){
-        replyService.giveFeedbackReply(batchId,phoneNo,feedbackService,batchService);
+    public String giveFeedbackReply(String batchId,String phoneNo){
+        return replyService.giveFeedbackReply(batchId,phoneNo,feedbackService,batchService);
     }
     public  String assignBatch(String batchId,String phoneNo)
     {

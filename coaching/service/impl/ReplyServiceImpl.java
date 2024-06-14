@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class ReplyServiceImpl implements ReplyService {
     ReplyRepositoryImpl repository=new ReplyRepositoryImpl();
     @Override
-    public void giveFeedbackReply(String batchId, String phoneNo,FeedbackServiceImpl feedbackService,BatchServiceImpl batchService) {
+    public String giveFeedbackReply(String batchId, String phoneNo,FeedbackServiceImpl feedbackService,BatchServiceImpl batchService) {
         Batch batch=batchService.getBatch(batchId);
         Scanner sc=new Scanner(System.in);
         if(batch!= null )
@@ -29,11 +29,13 @@ public class ReplyServiceImpl implements ReplyService {
                     }
                 }
             }
+            return "Thanks for feedback";
 
         }
         else {
-            System.out.println("Batch doesn't exist");
+            return "Batch doesn't exist";
         }
+
     }
 
 

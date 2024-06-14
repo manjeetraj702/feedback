@@ -32,7 +32,7 @@ public class BatchServiceImpl implements BatchService {
 
     @Override
     public String addStudent(String bathcId,String phoneNo,UserServiceImpl userService) {
-        User user=userService.findByPhoneNO(phoneNo);
+        User user=userService.findByPhoneNo(phoneNo);
         if(user==null)
         {
             return "This Phone Number Is Not registered";

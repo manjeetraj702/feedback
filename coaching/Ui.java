@@ -8,13 +8,21 @@ public class Ui {
     static  Scanner sc = new Scanner(System.in);
     static UserController userController=new UserController();
     public static void main(String[] args) {
+        int choice=0;
         String pno=null;
         loop : while (true){
             System.out.println("For Sign Up Press '1' ");
             System.out.println("For Sign In/Login Press '2' ");
             System.out.println("Press '0' For Exiting This Program ");
             System.out.print("Enter Your Choice : ");
-            int choice= sc.nextInt();
+            try {
+                choice= sc.nextInt();
+            }
+            catch (Exception e){
+                sc.nextLine();
+                System.out.println("Invalid entry");
+                continue ;
+            }
             System.out.println("\n");
             if(choice == 1){
                 System.out.print("Enter Your Name : ");
@@ -34,7 +42,8 @@ public class Ui {
                 System.out.print("Enter Your Phone Number : ");
                 pno= sc.next();
                 System.out.print("Enter Your PassWord : ");
-                String pass= sc.next();
+                sc.nextLine();
+                String pass= sc.nextLine();
                 String k=userController.signIn(pno,pass);
                 System.out.println(k);
                 System.out.println("\n");
@@ -42,7 +51,15 @@ public class Ui {
                     if(k.equals("Successfully Login as Admin")){
                         loop2 : while (true) {
                             dispalyAdminMenu();
-                            int inp = sc.nextInt();
+                            int inp=0;
+                            try {
+                                inp = sc.nextInt();
+                            }
+                            catch (Exception e){
+                                sc.nextLine();
+                                System.out.println("Invalid entry");
+                                continue ;
+                            }
                             switch (inp) {
                                 case -1:
                                     System.out.println("Leaving The Program .............  ");

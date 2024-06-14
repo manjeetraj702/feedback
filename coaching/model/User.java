@@ -15,7 +15,7 @@ public class User {
         this.assign = assign;
     }
 
-    public User(String userName, String phoneNo, String role, String password, boolean assign) {
+    public User(String userName, String phoneNo, String password, String role,boolean assign) {
         this.userName = userName;
         this.phoneNo = phoneNo;
         this.role = role;

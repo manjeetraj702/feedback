@@ -30,9 +30,14 @@ public class UserServiceImpl implements UserService {
         {
             return "Role contains only space";
         }
+        boolean a=true;
+        if(role=="ADMIN")
+        {
+            a=false;
+        }
 
         if(user1==null){
-        User user=new User(userName,phoneNo,password,role);
+        User user=new User(userName,phoneNo,password,role,a);
         userRepository.saveUser(user);
         return "User Added Successfully";
         }

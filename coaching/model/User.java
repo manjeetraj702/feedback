@@ -5,7 +5,23 @@ public class User {
     private String phoneNo;
     private String role;
     private String password;
+    private boolean assign=true;
 
+    public boolean isAssign() {
+        return assign;
+    }
+
+    public void setAssign(boolean assign) {
+        this.assign = assign;
+    }
+
+    public User(String userName, String phoneNo, String password, String role,boolean assign) {
+        this.userName = userName;
+        this.phoneNo = phoneNo;
+        this.role = role;
+        this.password = password;
+        this.assign = assign;
+    }
 
     public void setPassword(String password) {
         this.password = password;

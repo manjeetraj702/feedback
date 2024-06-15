@@ -11,10 +11,14 @@ public class UserController {
     BatchServiceImpl batchService=new BatchServiceImpl();
     FeedbackServiceImpl feedbackService=new FeedbackServiceImpl();
     ReplyServiceImpl replyService=new ReplyServiceImpl();
-    
+  
+    public String SignUp(String userName,String phoneNo,String password,String role)
+    {
+       return userService.signUp(userName,phoneNo,password,role);
     public void SignUp(String userName,String phoneNo,String password,String role)
     {
         userService.signUp(userName,phoneNo,password,role);
+
     }
     public String signIn(String phoneNo, String password)
     {
@@ -22,36 +26,36 @@ public class UserController {
     }
     public User findByPhoneNo(String phoneNo)
     {
-        return  userService.findByPhoneNO(phoneNo);
+        return  userService.findByPhoneNo(phoneNo);
     }
-    public void createBatch(String batchId)
+    public String createBatch(String batchId)
     {
-        batchService.createBatch(batchId);
+        return batchService.createBatch(batchId);
     }
-    public void addStudent(String batchId,String phoneNo)
-    {
-        batchService.addStudent(batchId,phoneNo);
-    }
+//    public String addStudent(String batchId,String phoneNo)
+//    {
+//        return batchService.addStudent(batchId,phoneNo);
+//    }
 
-    public  void createQuestion(String questionId,String question)
+    public  String createQuestion(String questionId,String question)
     {
-        feedbackService.createQuestion(questionId,question);
+        return feedbackService.createQuestion(questionId,question);
     }
-    public void editQuestion( String questionId, String question)
+    public String editQuestion( String questionId, String question)
     {
-        feedbackService.editQuestion(questionId,question);
+        return feedbackService.editQuestion(questionId,question);
     }
     public String addQuestion(String batchId,String questionId)
     {
         return batchService.addQuestion(batchId,questionId);
     }
 
-    public void giveFeedbackReply(String batchId,String phoneNo){
-        replyService.giveFeedbackReply(batchId,phoneNo,feedbackService,batchService);
+    public String giveFeedbackReply(String batchId,String phoneNo){
+        return replyService.giveFeedbackReply(batchId,phoneNo,feedbackService,batchService);
     }
-    public  void assignBatch(String batchId,String phoneNo)
+    public  String assignBatch(String batchId,String phoneNo)
     {
-        batchService.addStudent(batchId,phoneNo);
+        return batchService.addStudent(batchId,phoneNo,userService);
     }
     public void getAllReply(){
         replyService.getAllReply(batchService);

@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
         phoneNo=phoneNo.trim();
         if(phoneNo.isEmpty())
         {
-            return "PhoneNO contains only space";
+            return "PhoneNo contains only space";
         }
         password=password.trim();
         if(password.isEmpty())
@@ -30,9 +30,15 @@ public class UserServiceImpl implements UserService {
         {
             return "Role contains only space";
         }
+        boolean a=true;
+        if(role=="ADMIN")
+        {
+            a=false;
+        }
 
         if(user1==null){
-        User user=new User(userName,phoneNo,password,role);
+        User user=new User(userName,phoneNo,password,role,a);
+        System.out.println(password);
         userRepository.saveUser(user);
         return "User Added Successfully";
         }
@@ -45,6 +51,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String signIn(String phoneNo, String password) {
+        password=password.trim();
         User user=userRepository.findByPhoneNo(phoneNo);
         if(user!=null )
         {
@@ -66,7 +73,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByPhoneNO(String phoneNo) {
+    public User findByPhoneNo(String phoneNo) {
         List<User> userList=userRepository.getUserList();
         for(User user:userList)
         {

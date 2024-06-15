@@ -13,7 +13,7 @@ public class FeedbackServiceImpl implements FeedbackService {
         questionId=questionId.trim();
         if(questionId.isEmpty())
         {
-            return "QuestionId is blank";
+            return "Question ID is blank";
         }
         question=question.trim();
         if(question.isEmpty())
@@ -36,11 +36,13 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     public String editQuestion( String questionId, String question) {
-        questionId=questionId.trim();
-        if(questionId.isEmpty())
+        Feedback feedback= feedbackRepository.verfiyQuestionId(questionId);
+        if(feedback==null)
         {
-            return "QuestionId is blank";
+            return " QuestionId not present";
         }
+        questionId=questionId.trim();
+
         question=question.trim();
         if(question.isEmpty())
         {

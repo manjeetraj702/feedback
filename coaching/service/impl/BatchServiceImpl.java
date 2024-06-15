@@ -1,6 +1,7 @@
 package coaching.service.impl;
 
 import coaching.model.Batch;
+import coaching.model.User;
 import coaching.repository.impl.BatchRepositoryImpl;
 import coaching.service.BatchService;
 
@@ -30,8 +31,21 @@ public class BatchServiceImpl implements BatchService {
     }
 
     @Override
-    public String addStudent(String bathcId,String phoneNo) {
-                return batchRepository.addStudent(bathcId,phoneNo);
+    public String addStudent(String bathcId,String phoneNo,UserServiceImpl userService) {
+        User user=userService.findByPhoneNo(phoneNo);
+        if(user==null)
+        {
+            return "This Phone Number Is Not registered";
+        }
+        if(user.isAssign()) {
+            return batchRepository.addStudent(bathcId, phoneNo);
+        }
+        if(user.getRole().equals("ADMIN"))
+        {
+            return "This is Admin phoneNO";
+        }
+        user.setAssign(false);
+        return "Student is Already Assign";
     }
     public String addQuestion(String bathcId,String questionId) {
         return batchRepository.addQuestion(bathcId,questionId);

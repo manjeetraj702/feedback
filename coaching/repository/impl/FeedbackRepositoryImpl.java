@@ -30,4 +30,14 @@ public class FeedbackRepositoryImpl implements FeedbackRepository {
     }
 
 
+    public Feedback verfiyQuestionId(String questionId) {
+        for(Feedback feedback:feedbackList)
+        {
+            if(feedback.getQuestionId().equals(questionId))
+            {
+                return feedback;
+            }
+        }
+        return null;
+    }
 }

@@ -8,5 +8,5 @@ public interface ReplyService {
 
     void getReply(String phoneNo);
     void getAllReply(BatchServiceImpl batchService);
-     void giveFeedbackReply(String batchId, String phoneNo, FeedbackServiceImpl feedbackService, BatchServiceImpl batchService);
+     String giveFeedbackReply(String batchId, String phoneNo, FeedbackServiceImpl feedbackService, BatchServiceImpl batchService);
 }

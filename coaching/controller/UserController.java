@@ -11,10 +11,14 @@ public class UserController {
     BatchServiceImpl batchService=new BatchServiceImpl();
     FeedbackServiceImpl feedbackService=new FeedbackServiceImpl();
     ReplyServiceImpl replyService=new ReplyServiceImpl();
-    
+  
     public String SignUp(String userName,String phoneNo,String password,String role)
     {
        return userService.signUp(userName,phoneNo,password,role);
+    public void SignUp(String userName,String phoneNo,String password,String role)
+    {
+        userService.signUp(userName,phoneNo,password,role);
+
     }
     public String signIn(String phoneNo, String password)
     {
